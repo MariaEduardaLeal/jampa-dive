@@ -1,34 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JampaDive - Mergulho em João Pessoa</title>
-    
+    <title>Clube de Mergulho - Mergulho em João Pessoa</title>
+
     <!-- Tailwind CSS (via CDN para funcionar direto) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Configurações e Animações Personalizadas -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
-        
-        body { font-family: 'Inter', sans-serif; }
-        
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
         /* Animações Customizadas */
         @keyframes pulse-slow {
-            0%, 100% { opacity: 0.6; transform: scale(1.05); }
-            50% { opacity: 0.8; transform: scale(1.0); }
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1.05);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.0);
+            }
         }
-        .animate-pulse-slow { animation: pulse-slow 8s infinite ease-in-out; }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 8s infinite ease-in-out;
+        }
 
         @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
-        .animate-bounce-slow { animation: bounce-slow 3s infinite ease-in-out; }
+
+        .animate-bounce-slow {
+            animation: bounce-slow 3s infinite ease-in-out;
+        }
 
         /* Utilitários */
         .glass-panel {
@@ -39,34 +64,54 @@
         }
 
         /* Transições suaves para o mapa */
-        .map-point { transition: all 0.3s ease; }
+        .map-point {
+            transition: all 0.3s ease;
+        }
+
         .map-point.active .icon-container {
-            background-color: #0891b2; /* cyan-600 */
+            background-color: #0891b2;
+            /* cyan-600 */
             color: white;
             box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
-            width: 4rem; height: 4rem;
+            width: 4rem;
+            height: 4rem;
         }
-        .map-point.active span { color: #22d3ee; /* cyan-400 */ }
-        
+
+        .map-point.active span {
+            color: #22d3ee;
+            /* cyan-400 */
+        }
+
         .faq-answer {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
+
         .faq-answer.open {
-            max-height: 200px; /* Altura suficiente para o texto */
+            max-height: 200px;
+            /* Altura suficiente para o texto */
         }
     </style>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mariaeduardaleal.github.io/jampa-dive/">
+    <meta property="og:title" content="Clube do Mergulho - João Pessoa">
+    <meta property="og:description"
+        content="Explore os melhores naufrágios e corais de João Pessoa com quem entende do mar.">
 </head>
+
 <body class="bg-slate-950 text-slate-100 overflow-x-hidden selection:bg-cyan-500 selection:text-white">
 
     <!-- Navbar -->
-    <nav class="absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-6 md:px-12 bg-gradient-to-b from-slate-900/90 to-transparent">
+    <nav
+        class="absolute top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-6 md:px-12 bg-gradient-to-b from-slate-900/90 to-transparent">
         <div class="text-2xl font-bold tracking-widest uppercase flex items-center gap-2 text-white">
-            <div class="w-10 h-10 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
+            <div
+                class="w-10 h-10 bg-gradient-to-tr from-cyan-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-cyan-500/20">
                 <i data-lucide="anchor" class="text-white w-5 h-5"></i>
             </div>
-            Jampa<span class="text-cyan-400">Dive</span>
+            Clube de <span class="text-cyan-400">Mergulho</span>
         </div>
         <div class="hidden md:flex gap-8 text-sm font-medium text-cyan-100/80">
             <a href="#" class="hover:text-white hover:scale-105 transition-all">Início</a>
@@ -75,7 +120,8 @@
             <a href="#equipe" class="hover:text-white hover:scale-105 transition-all">Equipe</a>
             <a href="#faq" class="hover:text-white hover:scale-105 transition-all">Dúvidas</a>
         </div>
-        <button class="hidden md:block bg-slate-800/50 backdrop-blur-md border border-slate-600 px-6 py-2 rounded-full text-sm font-bold text-white hover:bg-slate-700 transition-all">
+        <button
+            class="hidden md:block bg-slate-800/50 backdrop-blur-md border border-slate-600 px-6 py-2 rounded-full text-sm font-bold text-white hover:bg-slate-700 transition-all">
             Área do Aluno
         </button>
     </nav>
@@ -84,22 +130,26 @@
     <div class="relative min-h-[90vh] flex flex-col justify-center items-center pt-20 overflow-hidden">
         <!-- Background -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1590082728472-a7d2b4f65306?q=80&w=2070&auto=format&fit=crop" alt="Mergulho JP" class="w-full h-full object-cover opacity-60 animate-pulse-slow">
+            <img src="queimadas.png"
+                alt="Mergulho JP" class="w-full h-full object-cover opacity-60 animate-pulse-slow">
             <div class="absolute inset-0 bg-gradient-to-b from-slate-900/50 via-blue-900/10 to-slate-950"></div>
         </div>
 
         <!-- Content -->
         <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-[-50px]">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-bold tracking-wider mb-4 backdrop-blur-sm">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs font-bold tracking-wider mb-4 backdrop-blur-sm">
                 <i data-lucide="map-pin" class="w-3 h-3"></i> JOÃO PESSOA - PB
             </div>
             <h1 class="text-5xl md:text-8xl font-black tracking-tighter uppercase mb-6 text-white drop-shadow-lg">
                 Bora <span class="text-cyan-400 italic font-serif lowercase">mergulhar?</span>
             </h1>
             <p class="text-slate-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                Somos especialistas nos naufrágios da costa paraibana. Sem frescura, com segurança e muita história pra contar.
+                Somos especialistas nos naufrágios da costa paraibana. Sem frescura, com segurança e muita história pra
+                contar.
             </p>
-            <button class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 rounded-full px-8 py-4 font-bold uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center justify-center gap-2 mx-auto hover:-translate-y-1">
+            <button
+                class="bg-cyan-500 hover:bg-cyan-400 text-slate-900 rounded-full px-8 py-4 font-bold uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center justify-center gap-2 mx-auto hover:-translate-y-1">
                 Agendar pelo Zap <i data-lucide="message-circle" class="w-5 h-5"></i>
             </button>
         </div>
@@ -107,8 +157,10 @@
 
     <!-- Live Conditions (Tábua de Marés) -->
     <div id="condicoes" class="relative z-20 -mt-20 px-6 max-w-5xl mx-auto mb-20">
-        <div class="bg-slate-900/80 backdrop-blur-xl border border-cyan-500/30 rounded-3xl p-6 shadow-2xl shadow-cyan-900/20">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 divide-y md:divide-y-0 md:divide-x divide-slate-700">
+        <div
+            class="bg-slate-900/80 backdrop-blur-xl border border-cyan-500/30 rounded-3xl p-6 shadow-2xl shadow-cyan-900/20">
+            <div
+                class="flex flex-col md:flex-row justify-between items-center gap-6 divide-y md:divide-y-0 md:divide-x divide-slate-700">
                 <!-- Status -->
                 <div class="text-center md:text-left md:pr-6">
                     <p class="text-xs font-bold text-cyan-500 tracking-wider mb-1">HOJE EM JAMPA</p>
@@ -121,17 +173,20 @@
                 <!-- Dados -->
                 <div class="flex-1 flex justify-around w-full pt-4 md:pt-0">
                     <div class="text-center group cursor-default">
-                        <i data-lucide="waves" class="mx-auto text-blue-400 mb-2 group-hover:scale-110 transition-transform w-6 h-6"></i>
+                        <i data-lucide="waves"
+                            class="mx-auto text-blue-400 mb-2 group-hover:scale-110 transition-transform w-6 h-6"></i>
                         <p class="text-lg font-bold text-white">0.4m</p>
                         <p class="text-[10px] text-slate-500 uppercase">Maré Baixa (09:30)</p>
                     </div>
                     <div class="text-center group cursor-default">
-                        <i data-lucide="droplets" class="mx-auto text-cyan-400 mb-2 group-hover:scale-110 transition-transform w-6 h-6"></i>
+                        <i data-lucide="droplets"
+                            class="mx-auto text-cyan-400 mb-2 group-hover:scale-110 transition-transform w-6 h-6"></i>
                         <p class="text-lg font-bold text-white">28°C</p>
                         <p class="text-[10px] text-slate-500 uppercase">Temp. Água</p>
                     </div>
                     <div class="text-center group cursor-default">
-                        <i data-lucide="sun" class="mx-auto text-yellow-400 mb-2 group-hover:scale-110 transition-transform w-6 h-6"></i>
+                        <i data-lucide="sun"
+                            class="mx-auto text-yellow-400 mb-2 group-hover:scale-110 transition-transform w-6 h-6"></i>
                         <p class="text-lg font-bold text-white">15m</p>
                         <p class="text-[10px] text-slate-500 uppercase">Visibilidade</p>
                     </div>
@@ -142,38 +197,58 @@
 
     <!-- Destinations Grid -->
     <div class="py-20 px-6 md:px-12 relative z-10 bg-slate-950">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-12 max-w-7xl mx-auto border-b border-slate-800 pb-6">
+        <div
+            class="flex flex-col md:flex-row justify-between items-end mb-12 max-w-7xl mx-auto border-b border-slate-800 pb-6">
             <div>
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Nossos <span class="text-cyan-400">Picos</span></h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Nossos <span class="text-cyan-400">Picos</span>
+                </h2>
             </div>
             <a href="#" class="text-cyan-400 text-sm font-bold hover:underline mt-4 md:mt-0">Ver todos os pontos →</a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             <!-- Card 1 -->
-            <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800 hover:border-cyan-500/50 transition-all">
-                <img src="https://images.unsplash.com/photo-1629248457632-15f5c93c139c?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-white border border-white/10">O Favorito</div>
-                <div class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black via-black/60 to-transparent">
+            <div
+                class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800 hover:border-cyan-500/50 transition-all">
+                <img src="queimadas2.png"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-white border border-white/10">
+                    O Favorito</div>
+                <div
+                    class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black via-black/60 to-transparent">
                     <h3 class="text-xl font-bold text-white">Naufrágio Queimado</h3>
-                    <p class="text-slate-400 text-xs flex items-center gap-1 mt-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Tambaú</p>
+                    <p class="text-slate-400 text-xs flex items-center gap-1 mt-1"><i data-lucide="map-pin"
+                            class="w-3 h-3"></i> Tambaú</p>
                 </div>
             </div>
             <!-- Card 2 -->
-            <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800 hover:border-cyan-500/50 transition-all">
-                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-white border border-white/10">Família</div>
-                <div class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black via-black/60 to-transparent">
+            <div
+                class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800 hover:border-cyan-500/50 transition-all">
+                <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=2070&auto=format&fit=crop"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-white border border-white/10">
+                    Família</div>
+                <div
+                    class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black via-black/60 to-transparent">
                     <h3 class="text-xl font-bold text-white">Picãozinho</h3>
-                    <p class="text-slate-400 text-xs flex items-center gap-1 mt-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Piscinas Naturais</p>
+                    <p class="text-slate-400 text-xs flex items-center gap-1 mt-1"><i data-lucide="map-pin"
+                            class="w-3 h-3"></i> Piscinas Naturais</p>
                 </div>
             </div>
             <!-- Card 3 -->
-            <div class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800 hover:border-cyan-500/50 transition-all">
-                <img src="https://images.unsplash.com/photo-1597992706366-0d04c1f96930?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
-                <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-white border border-white/10">Aventura</div>
-                <div class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black via-black/60 to-transparent">
+            <div
+                class="group relative h-80 rounded-2xl overflow-hidden cursor-pointer border border-slate-800 hover:border-cyan-500/50 transition-all">
+                <img src="alvarenga.png"
+                    class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div
+                    class="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-bold text-white border border-white/10">
+                    Aventura</div>
+                <div
+                    class="absolute bottom-0 left-0 p-6 w-full bg-gradient-to-t from-black via-black/60 to-transparent">
                     <h3 class="text-xl font-bold text-white">Naufrágio Alvarenga</h3>
-                    <p class="text-slate-400 text-xs flex items-center gap-1 mt-1"><i data-lucide="map-pin" class="w-3 h-3"></i> Cabo Branco</p>
+                    <p class="text-slate-400 text-xs flex items-center gap-1 mt-1"><i data-lucide="map-pin"
+                            class="w-3 h-3"></i> Cabo Branco</p>
                 </div>
             </div>
         </div>
@@ -189,18 +264,21 @@
         <!-- Map Container (Hidden on mobile) -->
         <div class="relative max-w-5xl mx-auto h-64 w-full mb-12 hidden md:block select-none border-b border-slate-800">
             <svg class="absolute top-0 left-0 w-full h-full" viewBox="0 0 1000 300" fill="none">
-                <path d="M50,150 C200,180 350,120 500,150 S800,200 950,150" stroke="#334155" strokeWidth="2" strokeDasharray="4 4" fill="none" />
+                <path d="M50,150 C200,180 350,120 500,150 S800,200 950,150" stroke="#334155" strokeWidth="2"
+                    strokeDasharray="4 4" fill="none" />
             </svg>
-            
+
             <!-- Points are generated by JS -->
             <div id="map-points-container"></div>
         </div>
 
         <!-- Dynamic Content Card -->
         <div class="max-w-4xl mx-auto px-6">
-            <div class="bg-slate-800 rounded-3xl p-1 shadow-2xl overflow-hidden flex flex-col md:flex-row transition-all duration-500" id="spot-card">
+            <div class="bg-slate-800 rounded-3xl p-1 shadow-2xl overflow-hidden flex flex-col md:flex-row transition-all duration-500"
+                id="spot-card">
                 <div class="w-full md:w-2/5 h-64 md:h-auto relative">
-                    <img id="spot-img" src="" class="w-full h-full object-cover rounded-2xl md:rounded-l-2xl md:rounded-r-none animate-fade">
+                    <img id="spot-img" src=""
+                        class="w-full h-full object-cover rounded-2xl md:rounded-l-2xl md:rounded-r-none animate-fade">
                 </div>
                 <div class="p-8 md:w-3/5 flex flex-col justify-center">
                     <h3 id="spot-title" class="text-2xl font-bold text-white mb-2"></h3>
@@ -208,7 +286,8 @@
                         <i data-lucide="ruler" class="w-4 h-4"></i> Profundidade: <span id="spot-depth"></span>
                     </p>
                     <p id="spot-desc" class="text-slate-300 text-sm leading-relaxed mb-6"></p>
-                    <button class="self-start text-white border-b border-cyan-500 pb-1 hover:text-cyan-400 transition-colors text-sm font-bold uppercase tracking-wider">
+                    <button
+                        class="self-start text-white border-b border-cyan-500 pb-1 hover:text-cyan-400 transition-colors text-sm font-bold uppercase tracking-wider">
                         Detalhes Completos
                     </button>
                 </div>
@@ -221,31 +300,38 @@
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-white mb-4">Quem te leva pro fundo</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto">Nossa equipe não é feita de modelos. Somos mergulhadores locais, apaixonados pelo mar e com certificação internacional.</p>
+                <p class="text-slate-400 max-w-2xl mx-auto">Nossa equipe não é feita de modelos. Somos mergulhadores
+                    locais, apaixonados pelo mar e com certificação internacional.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Team Member 1 -->
-                <div class="bg-slate-900 rounded-2xl p-6 text-center border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-2">
+                <div
+                    class="bg-slate-900 rounded-2xl p-6 text-center border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-2">
                     <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-slate-700 mb-4">
-                        <img src="https://images.unsplash.com/photo-1542596594-649edbc13630?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1542596594-649edbc13630?q=80&w=1974&auto=format&fit=crop"
+                            class="w-full h-full object-cover">
                     </div>
                     <h3 class="text-xl font-bold text-white">Capitão Beto</h3>
                     <p class="text-cyan-500 text-xs font-bold uppercase tracking-wider mb-4">Navegação</p>
                     <p class="text-slate-400 text-sm italic">"Conheço esse mar como a palma da mão."</p>
                 </div>
                 <!-- Team Member 2 -->
-                <div class="bg-slate-900 rounded-2xl p-6 text-center border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-2">
+                <div
+                    class="bg-slate-900 rounded-2xl p-6 text-center border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-2">
                     <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-slate-700 mb-4">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop"
+                            class="w-full h-full object-cover">
                     </div>
                     <h3 class="text-xl font-bold text-white">Mariana</h3>
                     <p class="text-cyan-500 text-xs font-bold uppercase tracking-wider mb-4">Instrutora PADI</p>
                     <p class="text-slate-400 text-sm italic">"Mergulhar é zen, bora relaxar."</p>
                 </div>
                 <!-- Team Member 3 -->
-                <div class="bg-slate-900 rounded-2xl p-6 text-center border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-2">
+                <div
+                    class="bg-slate-900 rounded-2xl p-6 text-center border border-slate-800 hover:border-cyan-500/30 transition-all hover:-translate-y-2">
                     <div class="w-24 h-24 mx-auto rounded-full overflow-hidden border-2 border-slate-700 mb-4">
-                        <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1780&auto=format&fit=crop" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=1780&auto=format&fit=crop"
+                            class="w-full h-full object-cover">
                     </div>
                     <h3 class="text-xl font-bold text-white">Junior (Ovelha)</h3>
                     <p class="text-cyan-500 text-xs font-bold uppercase tracking-wider mb-4">Divemaster</p>
@@ -255,6 +341,22 @@
         </div>
     </div>
 
+    <section class="py-16 bg-slate-900/50">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+        <h2 class="text-2xl font-bold mb-10 text-white">O que dizem os alunos</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="glass-panel p-6 rounded-2xl italic text-slate-300 text-sm">
+                "Fiz o meu Open Water com o Emerson e foi incrível. A segurança e a paciência dele fazem toda a diferença!"
+                <span class="block mt-4 font-bold text-cyan-400 not-italic">— Ana Silva, Desenvolvedora</span>
+            </div>
+            <div class="glass-panel p-6 rounded-2xl italic text-slate-300 text-sm">
+                "O mergulho no Queimado é de outro mundo. A equipe do Clube é nota 10!"
+                <span class="block mt-4 font-bold text-cyan-400 not-italic">— Ricardo M., Turista</span>
+            </div>
+        </div>
+    </div>
+</section>
+
     <!-- FAQ Section (Accordion Logic in JS) -->
     <div id="faq" class="py-20 px-6 bg-slate-950">
         <div class="max-w-3xl mx-auto">
@@ -263,32 +365,39 @@
                 <!-- FAQs will be generated or static structure below -->
                 <!-- Item 1 -->
                 <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
-                    <button class="w-full p-5 text-left flex justify-between items-center hover:bg-slate-800/50 transition-colors faq-btn">
+                    <button
+                        class="w-full p-5 text-left flex justify-between items-center hover:bg-slate-800/50 transition-colors faq-btn">
                         <span class="font-bold text-slate-200">Eu nunca mergulhei, posso ir?</span>
                         <i data-lucide="chevron-down" class="text-slate-500 transition-transform"></i>
                     </button>
                     <div class="faq-answer px-5 text-slate-400 text-sm leading-relaxed border-t border-transparent">
-                        <div class="py-4">Com certeza! O mergulho de 'Batismo' é feito exatamente para quem não tem experiência. Um instrutor vai te segurar o tempo todo. Você só precisa respirar e curtir.</div>
+                        <div class="py-4">Com certeza! O mergulho de 'Batismo' é feito exatamente para quem não tem
+                            experiência. Um instrutor vai te segurar o tempo todo. Você só precisa respirar e curtir.
+                        </div>
                     </div>
                 </div>
                 <!-- Item 2 -->
                 <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
-                    <button class="w-full p-5 text-left flex justify-between items-center hover:bg-slate-800/50 transition-colors faq-btn">
+                    <button
+                        class="w-full p-5 text-left flex justify-between items-center hover:bg-slate-800/50 transition-colors faq-btn">
                         <span class="font-bold text-slate-200">Preciso saber nadar?</span>
                         <i data-lucide="chevron-down" class="text-slate-500 transition-transform"></i>
                     </button>
                     <div class="faq-answer px-5 text-slate-400 text-sm leading-relaxed border-t border-transparent">
-                         <div class="py-4">Para o Batismo, NÃO precisa ser um nadador olímpico. Você estará de colete e nadadeiras. Mas ter conforto na água ajuda a relaxar.</div>
+                        <div class="py-4">Para o Batismo, NÃO precisa ser um nadador olímpico. Você estará de colete e
+                            nadadeiras. Mas ter conforto na água ajuda a relaxar.</div>
                     </div>
                 </div>
-                 <!-- Item 3 -->
-                 <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
-                    <button class="w-full p-5 text-left flex justify-between items-center hover:bg-slate-800/50 transition-colors faq-btn">
+                <!-- Item 3 -->
+                <div class="bg-slate-900 rounded-xl overflow-hidden border border-slate-800">
+                    <button
+                        class="w-full p-5 text-left flex justify-between items-center hover:bg-slate-800/50 transition-colors faq-btn">
                         <span class="font-bold text-slate-200">Tem tubarão em João Pessoa?</span>
                         <i data-lucide="chevron-down" class="text-slate-500 transition-transform"></i>
                     </button>
                     <div class="faq-answer px-5 text-slate-400 text-sm leading-relaxed border-t border-transparent">
-                         <div class="py-4">A pergunta clássica! Em João Pessoa os ataques são extremamente raros devido à barreira de corais. Vemos mais tartarugas, arraias e peixinhos coloridos.</div>
+                        <div class="py-4">A pergunta clássica! Em João Pessoa os ataques são extremamente raros devido à
+                            barreira de corais. Vemos mais tartarugas, arraias e peixinhos coloridos.</div>
                     </div>
                 </div>
             </div>
@@ -298,17 +407,19 @@
     <!-- Footer -->
     <footer class="bg-slate-950 py-10 px-6 border-t border-slate-900 text-center text-slate-500 text-xs">
         <div class="mb-4 flex justify-center gap-6 flex-wrap">
-             <a href="#" class="hover:text-cyan-400">Termos de Uso</a>
-             <a href="#" class="hover:text-cyan-400">Política de Cancelamento (Chuva)</a>
-             <a href="#" class="hover:text-cyan-400">Localização</a>
+            <a href="#" class="hover:text-cyan-400">Termos de Uso</a>
+            <a href="#" class="hover:text-cyan-400">Política de Cancelamento (Chuva)</a>
+            <a href="#" class="hover:text-cyan-400">Localização</a>
         </div>
-        <p>&copy; 2024 JampaDive. Feito com sal e sol em João Pessoa.</p>
+        <p>&copy; 2024 Clube de Mergulho. Feito com sal e sol em João Pessoa.</p>
     </footer>
 
     <!-- Floating WhatsApp -->
-    <a href="#" class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg shadow-green-500/30 transition-transform hover:scale-110 flex items-center justify-center animate-bounce-slow group">
+    <a href="#"
+        class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg shadow-green-500/30 transition-transform hover:scale-110 flex items-center justify-center animate-bounce-slow group">
         <i data-lucide="message-circle" class="w-7 h-7"></i>
-        <span class="absolute right-full mr-3 bg-white text-slate-900 text-xs font-bold px-2 py-1 rounded shadow-md w-max opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+        <span
+            class="absolute right-full mr-3 bg-white text-slate-900 text-xs font-bold px-2 py-1 rounded shadow-md w-max opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
             Fale com a gente!
         </span>
     </a>
@@ -333,7 +444,7 @@
                 id: 2,
                 title: "Naufrágio Queimado",
                 desc: "Vapor postal americano naufragado em 1871. Hoje restam as caldeiras e máquinas, formando um ecossistema vibrante e cheio de corais.",
-                img: "https://images.unsplash.com/photo-1629248457632-15f5c93c139c?q=80&w=2070&auto=format&fit=crop",
+                img: "queimadas2.png",
                 depth: "15-40m",
                 coords: { top: "30%", left: "50%" },
                 icon: "anchor"
@@ -366,7 +477,7 @@
                 // Icon Container
                 const iconContainer = document.createElement('div');
                 iconContainer.className = `icon-container flex items-center justify-center rounded-full transition-all duration-300 ${isActive ? 'bg-cyan-600 text-white shadow-lg shadow-cyan-500/50 w-16 h-16' : 'w-12 h-12 bg-slate-800 text-slate-500 hover:bg-slate-700 hover:text-cyan-400'}`;
-                
+
                 // Usar HTML string para o ícone pq lucide.createIcons roda no load
                 // Mas aqui estamos criando dinamicamente
                 iconContainer.innerHTML = `<i data-lucide="${spot.icon}" class="${isActive ? 'w-6 h-6' : 'w-4 h-4'}"></i>`;
@@ -380,7 +491,7 @@
                 point.appendChild(label);
                 container.appendChild(point);
             });
-            
+
             // Re-run lucide scan para os novos icones criados
             lucide.createIcons();
             updateCard();
@@ -400,7 +511,7 @@
 
             // Simples fade effect mudando a opacidade
             img.style.opacity = 0;
-            
+
             setTimeout(() => {
                 img.src = spot.img;
                 title.innerText = spot.title;
@@ -439,4 +550,5 @@
 
     </script>
 </body>
+
 </html>
